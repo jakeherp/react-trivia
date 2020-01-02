@@ -1,9 +1,20 @@
 import React from 'react';
+import Question from '../atoms/Question';
+
+const dummyQuestion = {
+  question: 'Best programming language?',
+  answerChoices: [
+    'Java',
+    'JavaScript',
+    'PHP',
+    'C#'
+  ]
+}
 
 const Quiz: React.FC = () => {
   return (
     <>
-      <h1>Trivia</h1>
+      <Question question={dummyQuestion} />
     </>
   );
 };
