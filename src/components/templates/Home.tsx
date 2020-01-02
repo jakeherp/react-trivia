@@ -1,17 +1,18 @@
-import React from 'react'
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const Home: React.FC = () => {
   return (
-    <div className="container">
+    <>
       <h1>Trivia</h1>
-      <a href="/quiz" className="btn">
+      <Link to="/quiz" className="btn">
         Start Quiz
-      </a>
-      <a href="/highscores" className="btn">
+      </Link>
+      <Link to="/highscores" className="btn">
         High Scores
-      </a>
-    </div>
-  )
-}
+      </Link>
+    </>
+  );
+};
 
-export default Home
+export default Home;
