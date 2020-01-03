@@ -6,7 +6,7 @@ interface IProps {
     answerChoices: string[];
     correctAnswer: number;
   };
-  changeQuestion: () => void;
+  changeQuestion: (bonus: number) => void;
 };
 
 const Question = ({ question: { question, answerChoices: answers, correctAnswer }, changeQuestion }: IProps) => {
@@ -27,8 +27,9 @@ const Question = ({ question: { question, answerChoices: answers, correctAnswer 
     setTimeout(() => {
       setSelectedAnswer(-1);
       setAnswering(false);
-      changeQuestion();
-    }, 1000)
+      changeQuestion(bonus);
+    }, 1000);
+
   }
 
   return (

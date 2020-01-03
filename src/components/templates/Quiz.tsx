@@ -6,7 +6,8 @@ import Loader from '../atoms/Loader';
 
 const Quiz: React.FC = () => {
   const [questions, setQuestions] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(0)
+  const [currentQuestion, setCurrentQuestion] = useState(0);
+  const [score, setScore] = useState(0);
 
   useEffect(() => {
     loadQuestions()
@@ -15,13 +16,14 @@ const Quiz: React.FC = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  const changeQuestion = () => {
+  const changeQuestion = (bonus = 0) => {
     const randomQuestionIndex = Math.floor(Math.random() * (questions.length - 1));
     const remainingQuestions = [...questions]
     remainingQuestions.splice(randomQuestionIndex, 1)
 
     setCurrentQuestion(randomQuestionIndex)
     setQuestions(remainingQuestions)
+    setScore(score + bonus)
   }
 
   return (
