@@ -17,13 +17,8 @@ const Quiz: React.FC = () => {
 
   const changeQuestion = () => {
     const randomQuestionIndex = Math.floor(Math.random() * (questions.length - 1));
-    const currentQuestion = questions[randomQuestionIndex];
     const remainingQuestions = [...questions]
     remainingQuestions.splice(randomQuestionIndex, 1)
-
-    console.log('randomQuestionIndex', randomQuestionIndex)
-    console.log('currentQuestion', currentQuestion)
-    console.log('remainingQuestions', remainingQuestions)
 
     setCurrentQuestion(randomQuestionIndex)
     setQuestions(remainingQuestions)
