@@ -2,29 +2,40 @@ import React, { useEffect, useState } from 'react';
 import Question from '../atoms/Question';
 import { loadQuestions } from '../../helpers/questions.helper';
 
+import Loader from '../atoms/Loader';
+
 const Quiz: React.FC = () => {
   const [questions, setQuestions] = useState([]);
   const [currentQuestion, setCurrentQuestion] = useState(0)
 
   useEffect(() => {
-    async function fetchQuestions() {
-      try {
-        const questions = await loadQuestions();
-        setQuestions(questions)
-      } catch (err) {
-        console.error(err)
-      }
-    }
-    fetchQuestions();
+    loadQuestions()
+      .then(questions => setQuestions(questions))
+      .catch(err => console.error(err));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 
-  console.log(questions);
+  const changeQuestion = () => {
+    const randomQuestionIndex = Math.floor(Math.random() * questions.length);
+    const currentQuestion = questions[randomQuestionIndex];
+    const remainingQuestions = [...questions]
+
+    remainingQuestions.splice(randomQuestionIndex, 1)
+
+    setCurrentQuestion(currentQuestion)
+    setQuestions(remainingQuestions)
+  }
 
   return (
     <>
-      {questions.length > 0 && (
-        <Question question={questions[currentQuestion]} />
-      )}
+      {questions.length > 0 ? (
+        <Question
+          question={questions[currentQuestion]}
+          changeQuestion={changeQuestion}
+        />
+      ) : (
+          <Loader />
+        )}
     </>
   );
 };
