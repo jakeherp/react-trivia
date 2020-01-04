@@ -1,4 +1,4 @@
-import { IQuestion, IRaw } from "../interfaces/question";
+// import { IQuestion, IRaw } from "../interfaces/question";
 
 export const loadQuestions = async (amount = 15, category = 9, difficulty = 'hard') => {
   const url = `https://opentdb.com/api.php?amount=${amount}&category=${category}&difficulty=${difficulty}&type=multiple`;
@@ -13,10 +13,10 @@ export const loadQuestions = async (amount = 15, category = 9, difficulty = 'har
   }
 };
 
-const convertQuestions = (rawQuestion: IRaw[]) => {
+const convertQuestions = (rawQuestion: any) => {
   console.log(rawQuestion);
-  return rawQuestion.map((loadedQuestion: IRaw) => {
-    const formattedQuestion: IQuestion = {
+  return rawQuestion.map((loadedQuestion: any) => {
+    const formattedQuestion: any = {
       question: loadedQuestion.question,
       answerChoices: [...loadedQuestion.incorrect_answers],
       correctAnswer: -1,

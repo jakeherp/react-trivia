@@ -1,8 +1,8 @@
 import React, { useState } from 'react';
-import { IQuestion } from '../../interfaces/question'
+// import { IQuestion } from '../../interfaces/question'
 
 interface IProps {
-  question: IQuestion;
+  question: any;
   changeQuestion: (bonus: number) => void;
 };
 
@@ -32,7 +32,7 @@ const Question = ({ question: { question, answerChoices: answers, correctAnswer 
   return (
     <div>
       <h2 dangerouslySetInnerHTML={{ __html: question }} />
-      {answers.map((answer, index) => (
+      {answers.map((answer: string, index: number) => (
         <div
           className={`choice-container ${selectedAnswer === index && className}`}
           key={`optn-${index}`}
