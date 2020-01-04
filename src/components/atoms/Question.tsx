@@ -1,11 +1,8 @@
 import React, { useState } from 'react';
+import { IQuestion } from '../../interfaces/question'
 
 interface IProps {
-  question: {
-    question: string;
-    answerChoices: string[];
-    correctAnswer: number;
-  };
+  question: IQuestion;
   changeQuestion: (bonus: number) => void;
 };
 

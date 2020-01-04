@@ -5,9 +5,9 @@ import { loadQuestions } from '../../helpers/questions.helper';
 import Loader from '../atoms/Loader';
 
 const Quiz: React.FC = () => {
-  const [questions, setQuestions] = useState([]);
-  const [currentQuestion, setCurrentQuestion] = useState(0);
-  const [score, setScore] = useState(0);
+  const [questions, setQuestions] = useState<string[]>([]);
+  const [currentQuestion, setCurrentQuestion] = useState<number>(0);
+  const [score, setScore] = useState<number>(0);
 
   useEffect(() => {
     loadQuestions()
