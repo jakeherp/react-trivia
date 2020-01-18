@@ -5,6 +5,7 @@ import './App.css';
 import Home from './components/templates/Home';
 import Quiz from './components/templates/Quiz';
 import Highscores from './components/templates/Highscores';
+import Settings from './components/templates/Settings';
 
 const App: React.FC = () => {
   return (
@@ -13,6 +14,7 @@ const App: React.FC = () => {
         <Route exact path="/" component={Home} />
         <Route path="/quiz" component={Quiz} />
         <Route path="/highscores" component={Highscores} />
+        <Route path="/settings" component={Settings} />
       </div>
     </Router>
   );

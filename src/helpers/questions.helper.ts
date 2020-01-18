@@ -14,7 +14,6 @@ export const loadQuestions = async (amount = 15, category = 9, difficulty = 'har
 };
 
 const convertQuestions = (rawQuestion: any) => {
-  console.log(rawQuestion);
   return rawQuestion.map((loadedQuestion: any) => {
     const formattedQuestion: any = {
       question: loadedQuestion.question,

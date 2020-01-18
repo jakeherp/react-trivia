@@ -9,7 +9,8 @@ const Quiz: React.FC = () => {
   const [questions, setQuestions] = useState<string[]>([]);
   const [currentQuestion, setCurrentQuestion] = useState<number>(0);
   const [score, setScore] = useState<number>(0);
-  const [questionNumber, setQuestionNumber] = useState<number>(0)
+  const [questionNumber, setQuestionNumber] = useState<number>(0);
+  const [done, setDone] = useState<boolean>(false);
 
   useEffect(() => {
     loadQuestions()
@@ -22,7 +23,12 @@ const Quiz: React.FC = () => {
   }, []);
 
   const changeQuestion = (bonus = 0) => {
-    const randomQuestionIndex = Math.floor(Math.random() * (questions.length - 1));
+    if (questions.length - 1 === 0) {
+      setDone(true);
+      console.log("DONE!!!");
+      return;
+    };
+    const randomQuestionIndex = Math.floor(Math.random() * questions.length);
     const remainingQuestions = [...questions]
     remainingQuestions.splice(randomQuestionIndex, 1)
 
@@ -34,15 +40,21 @@ const Quiz: React.FC = () => {
 
   return (
     <>
-      <Stats score={score} questionNumber={questionNumber} />
-      {questions.length > 0 ? (
-        <Question
-          question={questions[currentQuestion]}
-          changeQuestion={changeQuestion}
-        />
-      ) : (
-          <Loader />
-        )}
+      {!done && (
+        <>
+          {questions.length >= 1 ? (
+            <>
+              <Stats score={score} questionNumber={questionNumber} />
+              <Question
+                question={questions[currentQuestion]}
+                changeQuestion={changeQuestion}
+              />
+            </>
+          ) : (
+              <Loader />
+            )}
+        </>
+      )}
     </>
   );
 };

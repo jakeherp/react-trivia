@@ -11,6 +11,9 @@ const Home: React.FC = () => {
       <Link to="/highscores" className="btn">
         High Scores
       </Link>
+      <Link to="/settings" className="btn">
+        Settings
+      </Link>
     </>
   );
 };
